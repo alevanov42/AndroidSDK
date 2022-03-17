@@ -1,1 +1,3 @@
-include ':app', ':payment'
+include ':enaza-uz-payment'
+include ':app'
+rootProject.name = "EnazaPaymentUZ"
