@@ -12,7 +12,7 @@
 
 ```java
 dependencies {
-   compile 'uz.paycom:payment:$last version' 
+   implementation 'com.github.alevanov42:AndroidSDK:$last version' 
 }
 ```
 
