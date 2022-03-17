@@ -36,15 +36,16 @@ public class JsonRpcRequest {
         try {
             String urlApi = PaycomSandBox.isSandBox() ? "https://checkout.test.paycom.uz/api"
                     : "https://checkout.paycom.uz/api";
-            Logger.d(TAG, urlApi);
+            Logger.d("callApi123", urlApi);
             URL url = new URL(urlApi);
             urlConnection = (HttpsURLConnection) url.openConnection();
 
             try {
                 urlConnection.setSSLSocketFactory(new TLSSocketFactory());
             } catch (KeyManagementException | NoSuchAlgorithmException e) {
-                Logger.d(TAG, e.toString());
+                Logger.d("callApi_error123", e.toString());
             }
+            Logger.d("callApi_no_error123", "++++");
 
             urlConnection.setRequestMethod("POST");
             urlConnection.addRequestProperty("X-Auth", xAuth);
@@ -57,7 +58,7 @@ public class JsonRpcRequest {
             writer.write(jsonObject.toString());
             writer.flush();
 
-            Logger.d(TAG, jsonObject.toString());
+            Logger.d("jsonObject123", jsonObject.toString());
             int responseCode = urlConnection.getResponseCode();
 
             String line = "";
@@ -66,16 +67,18 @@ public class JsonRpcRequest {
                 BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
                 while ((line = br.readLine()) != null) {
                     response.append(line);
-                    Logger.d(TAG, line);
                 }
                 br.close();
+                Logger.d("response123", response.toString());
                 return response.toString();
             } else {
+                Logger.d("response123", "Unexpected responseCode111: " + responseCode);
                 throw new IOException("Unexpected responseCode: " + responseCode);
             }
 
         } catch (IOException e) {
             Logger.d(TAG, e.toString());
+            Logger.d("response1231", e.toString());
             return null;
         } finally {
             if (urlConnection != null) {
