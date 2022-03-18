@@ -1,5 +1,7 @@
 package com.enaza.uz.payment.api;
 
+import android.util.Log;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -65,6 +67,7 @@ public class TLSSocketFactory extends SSLSocketFactory {
         if(socket != null && (socket instanceof SSLSocket)) {
             ((SSLSocket)socket).setEnabledProtocols(new String[] {"TLSv1.1", "TLSv1.2"});
         }
+        Log.e("enableTLSOnSocket123", socket.toString());
         return socket;
     }
 }
