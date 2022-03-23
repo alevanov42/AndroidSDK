@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Paycom</string>
+    <string name="paymentSum">Amount payable</string>
+    <string name="cardNumber">Card number</string>
+    <string name="uzcardOnly">Only Uzcard Online cards</string>
+    <string name="dateExpire">Expiry date</string>
+    <string name="cardRemember">Remember card</string>
+    <string name="continueText">Proceed</string>
+    <string name="confirm">Confirm</string>
+    <string name="codeSent">CONFIRMATION CODE SENT TO NUMBER</string>
+    <string name="codeConfirm">CONFIRMATION CODE</string>
+    <string name="error">Mistake</string>
+    <string name="close">close</string>
+    <string name="tryAgainMessage">An error has occurred, please try again</string>
+    <string name="cardNumberHint">xxxx xxxx xxxx xxxx</string>
+    <string name="dateExpireHint">mm/yy</string>
+    <string name="paycomTitle">Paycom Payment</string>
+    <string name="invalidCard">Wrong card number</string>
+    <string name="card_balance_currency">sum</string>
+</resources>

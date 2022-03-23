@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_ID, xAuth); //Ваш ID мерчанта
         intent.putExtra(EXTRA_AMOUNT, sum); //Сумма оплаты
         intent.putExtra(EXTRA_SAVE, multyPaying); //Сохранить для многократной оплаты?
-        intent.putExtra(EXTRA_LANG, "RU"); //Язык "RU" или "UZ"
+        intent.putExtra(EXTRA_LANG, "en"); //Язык "RU" или "UZ"
         PaycomSandBox.setEnabled(true); //true для тестовой площадки, по умолчанию false
         startActivityForResult(intent, 0);
     }

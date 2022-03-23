@@ -17,6 +17,7 @@ public class LocaleHelper {
   private static String getLanguage(String language) {
     if (language == null) return Locale.getDefault().getLanguage();
     if (language.toLowerCase().trim().equals("uz")) return language;
+    if (language.toLowerCase().trim().equals("en")) return language;
     return Locale.getDefault().getLanguage();
   }
 
