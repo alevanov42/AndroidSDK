@@ -1,5 +1,3 @@
 <resources>
-    <string name="app_name">TestPaycom</string>
-    <string name="multiplePayment">Многократная оплата</string>
-    <string name="payment">Оплата</string>
+    <string name="app_name2">TestPaycom</string>
 </resources>
