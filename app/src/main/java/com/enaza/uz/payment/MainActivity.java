@@ -1,12 +1,10 @@
 package com.enaza.uz.payment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.enaza.uz.R;
-import com.enaza.uz.payment.utils.PaycomSandBox;
 
 
 public class MainActivity extends AppCompatActivity {
