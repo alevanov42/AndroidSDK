@@ -1,6 +1,7 @@
 package com.enaza.uz.payment.api.task;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.enaza.uz.payment.api.JsonParser;
 import com.enaza.uz.payment.api.JsonRpcRequest;
@@ -33,21 +34,23 @@ public class VerifyCardTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPreExecute() {
-
     }
 
     @Override
     protected String doInBackground(Void... params) {
+        Log.e("asdiasbh", "asfoif");
         JsonRpcRequest jsonRpcRequest = new JsonRpcRequest(id, lang);
 
         JSONObject jsonObject = jsonParser.getCardsCreate(number, expire, amount, save);
+        Log.e("asdeasd", jsonObject.toString());
         String result = jsonRpcRequest.callApiMethod(jsonObject, JsonRpcRequest.cardsCreateMethod);
 
         if (result == null) return null;
         if (jsonParser.checkError(result) != null) {
             hasError = true;
-            return jsonParser.checkError(result);
+            return result;
         }
+
 
         token = jsonParser.getCardToken(result);
         jsonObject = jsonParser.getCardsVerifyCode(token);
@@ -57,13 +60,14 @@ public class VerifyCardTask extends AsyncTask<Void, Void, String> {
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        if (s == null) {
+    protected void onPostExecute(String json) {
+        Log.e("asdfdsf", json);
+        if (json == null) {
             verifyCardCallback.onError(""); //TODO добавить текст ошибки
         } else if (hasError) {
-            verifyCardCallback.onError(s);
+            verifyCardCallback.onError(json);
         } else {
-            verifyCardCallback.onSuccess(jsonParser.getConfirm(s), token);
+            verifyCardCallback.onSuccess(jsonParser.getConfirm(json), token);
         }
     }
 }

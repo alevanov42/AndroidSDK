@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import com.enaza.uz.payment.api.JsonParser;
 import com.enaza.uz.payment.api.JsonRpcRequest;
 import com.enaza.uz.payment.api.callback.ConfirmCodeCallback;
-
 import org.json.JSONObject;
 
 public class ConfirmCodeTask extends AsyncTask<Void, Void, String> {
@@ -41,21 +40,21 @@ public class ConfirmCodeTask extends AsyncTask<Void, Void, String> {
         if (result == null) return null;
         if (jsonParser.checkError(result) != null) {
             hasError = true;
-            return jsonParser.checkError(result);
+            return result;
         }
 
         return result;
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        if (s == null) {
+    protected void onPostExecute(String json) {
+        if (json == null) {
 //            showError(getString(R.string.tryAgainMessage));
             confirmCodeCallback.onError("");
         } else if (hasError) {
-            confirmCodeCallback.onError(s);
+            confirmCodeCallback.onError(json);
         } else {
-            confirmCodeCallback.onSuccess(jsonParser.getResult(s));
+            confirmCodeCallback.onSuccess(jsonParser.getResult(json));
         }
     }
 }

@@ -1,10 +1,15 @@
 package com.enaza.uz.payment;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.enaza.uz.R;
+import com.enaza.uz.payment.api.callback.VerifyCardCallback;
+import com.enaza.uz.payment.api.task.VerifyCardTask;
+import com.enaza.uz.payment.model.Confirm;
+import com.enaza.uz.payment.utils.PaycomSandBox;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -12,18 +17,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_test);
 
-        String xAuth = "5a3bb098d9ffa237dc027290";
-        Double sum = 5551.0;
-        Boolean multyPaying = false;
+        PaycomSandBox.setEnabled(true);
 
-//        Intent intent = new Intent(MainActivity.this, PaymentActivity.class);
-//        intent.putExtra(EXTRA_ID, xAuth); //Ваш ID мерчанта
-//        intent.putExtra(EXTRA_AMOUNT, sum); //Сумма оплаты
-//        intent.putExtra(EXTRA_SAVE, multyPaying); //Сохранить для многократной оплаты?
-//        intent.putExtra(EXTRA_LANG, "en"); //Язык "RU" или "UZ"
-//        PaycomSandBox.setEnabled(true); //true для тестовой площадки, по умолчанию false
-//        startActivityForResult(intent, 0);
+        new VerifyCardTask(
+                "6229d432f193c361ee0718bb",
+                14990.0,
+                "8600495473316477",
+                "0399",
+                "en",
+                false, new VerifyCardCallback() {
+
+            @Override
+            public void onSuccess(Confirm confirm, String token) {
+
+            }
+
+            @Override
+            public void onError(String error) {
+                Log.e("asdasd", error);
+            }
+        }).execute();
+
     }
 }

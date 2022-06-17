@@ -67,7 +67,7 @@ public class TLSSocketFactory extends SSLSocketFactory {
         if(socket != null && (socket instanceof SSLSocket)) {
             ((SSLSocket)socket).setEnabledProtocols(new String[] {"TLSv1.1", "TLSv1.2"});
         }
-        Log.e("enableTLSOnSocket123", socket.toString());
+
         return socket;
     }
 }

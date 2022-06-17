@@ -1,11 +1,12 @@
 package com.enaza.uz.payment.api;
 
+import android.util.Log;
+
 import com.enaza.uz.payment.utils.Logger;
 import com.enaza.uz.payment.utils.PaycomSandBox;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -69,6 +70,7 @@ public class JsonRpcRequest {
                     response.append(line);
                 }
                 br.close();
+                Log.e("dofdjsds", response.toString());
                 return response.toString();
             } else {
                 throw new IOException("Unexpected responseCode: " + responseCode);

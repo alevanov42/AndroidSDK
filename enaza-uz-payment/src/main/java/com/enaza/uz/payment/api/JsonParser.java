@@ -94,6 +94,8 @@ public class JsonParser {
         }
     }
 
+
+
     public Result getResult(String json) {
         try {
             JSONObject jsonObject = new JSONObject(json);
