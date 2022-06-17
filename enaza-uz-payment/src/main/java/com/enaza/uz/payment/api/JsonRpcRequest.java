@@ -26,10 +26,12 @@ public class JsonRpcRequest {
     public final static String cardsCreateVerifyMethod = "cards.verify";
 
     private final String xAuth;
+    private final String lang;
     private HttpsURLConnection urlConnection;
 
-    public JsonRpcRequest(String xAuth) {
+    public JsonRpcRequest(String xAuth, String lang) {
         this.xAuth = xAuth;
+        this.lang = lang;
     }
 
     private String callApi(JSONObject jsonObject) {
@@ -47,6 +49,7 @@ public class JsonRpcRequest {
 
             urlConnection.setRequestMethod("POST");
             urlConnection.addRequestProperty("X-Auth", xAuth);
+            urlConnection.addRequestProperty("x-accept-language", lang);
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
             urlConnection.setUseCaches(false);

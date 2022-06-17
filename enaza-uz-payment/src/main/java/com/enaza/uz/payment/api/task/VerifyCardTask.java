@@ -17,16 +17,17 @@ public class VerifyCardTask extends AsyncTask<Void, Void, String> {
     private Double amount;
     private boolean hasError, save;
     private JsonParser jsonParser;
-    private String id, number, expire, token;
+    private String id, number, expire, token, lang;
     private VerifyCardCallback verifyCardCallback;
 
-    public VerifyCardTask(String id, Double amount, String number, String expire, Boolean isSave, VerifyCardCallback verifyCardCallback) {
+    public VerifyCardTask(String id, Double amount, String number, String expire, String lang, Boolean isSave, VerifyCardCallback verifyCardCallback) {
         jsonParser = new JsonParser();
         this.id = id;
         this.amount = amount;
         this.number = number;
         this.expire = expire;
         this.save = isSave;
+        this.lang = lang;
         this.verifyCardCallback = verifyCardCallback;
     }
 
@@ -37,7 +38,7 @@ public class VerifyCardTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... params) {
-        JsonRpcRequest jsonRpcRequest = new JsonRpcRequest(id);
+        JsonRpcRequest jsonRpcRequest = new JsonRpcRequest(id, lang);
 
         JSONObject jsonObject = jsonParser.getCardsCreate(number, expire, amount, save);
         String result = jsonRpcRequest.callApiMethod(jsonObject, JsonRpcRequest.cardsCreateMethod);

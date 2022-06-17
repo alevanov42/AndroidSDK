@@ -13,14 +13,16 @@ public class ConfirmCodeTask extends AsyncTask<Void, Void, String> {
     private String id;
     private String code;
     private String token;
+    private String lang;
     private ConfirmCodeCallback confirmCodeCallback;
     private boolean hasError;
     private JsonParser jsonParser;
 
-    public ConfirmCodeTask(String id, String code, String token, ConfirmCodeCallback confirmCodeCallback) {
+    public ConfirmCodeTask(String id, String code, String token, String lang, ConfirmCodeCallback confirmCodeCallback) {
         this.id = id;
         this.code = code;
         this.token = token;
+        this.lang = lang;
         this.confirmCodeCallback = confirmCodeCallback;
         this.jsonParser = new JsonParser();
     }
@@ -31,7 +33,7 @@ public class ConfirmCodeTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... params) {
-        JsonRpcRequest jsonRpcRequest = new JsonRpcRequest(id);
+        JsonRpcRequest jsonRpcRequest = new JsonRpcRequest(id, lang);
 
         JSONObject jsonObject = jsonParser.getCardsVerify(token, code);
         String result = jsonRpcRequest.callApiMethod(jsonObject, JsonRpcRequest.cardsCreateVerifyMethod);

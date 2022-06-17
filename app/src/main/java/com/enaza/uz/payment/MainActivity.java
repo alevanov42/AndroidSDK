@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
+//        setContentView(R.layout.activity_test);
 
         String xAuth = "5a3bb098d9ffa237dc027290";
         Double sum = 5551.0;
