@@ -143,7 +143,7 @@ public class ConfirmActivity extends AppCompatActivity {
     }
 
     @Override protected String doInBackground(Void... params) {
-      JsonRpcRequest jsonRpcRequest = new JsonRpcRequest(PaymentActivity.id);
+      JsonRpcRequest jsonRpcRequest = new JsonRpcRequest(PaymentActivity.id, "ru");
 
       JSONObject jsonObject = jsonParser.getCardsVerify(token, code);
       String result = jsonRpcRequest.callApiMethod(jsonObject, JsonRpcRequest.cardsCreateVerifyMethod);
@@ -184,7 +184,7 @@ public class ConfirmActivity extends AppCompatActivity {
 
     @Override
     protected String doInBackground(Void... params) {
-      JsonRpcRequest jsonRpcRequest = new JsonRpcRequest(PaymentActivity.id);
+      JsonRpcRequest jsonRpcRequest = new JsonRpcRequest(PaymentActivity.id, "ru");
       JSONObject jsonObject = jsonParser.getCardsVerifyCode(token);
 
       String result = jsonRpcRequest.callApiMethod(jsonObject, JsonRpcRequest.cardsGetVerifyCodeMethod);
